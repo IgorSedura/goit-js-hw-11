@@ -1,10 +1,40 @@
-ul {
+ul, li{
     list-style: none;
+
 }
-li{
-    list-style: none;
+img {
+    width: 100%;
+
+        object-fit: cover;
+        display: block;
+        height: 300px
 }
 
 body {
     background-color: aqua;
+        margin: 0 auto;
+            padding-left: 15px;
+            padding-right: 15px;
+}
+
+.gallery{
+        display: flex;
+            flex-wrap: wrap;
+            margin-right: -30px;
+            margin-bottom: -30px;
+}
+
+.photo-card{
+        flex-basis: calc(100% / 4 - 30px);
+            margin-right: 30px;
+            margin-bottom: 30px;
+            outline: 1px solid #EEEEEE;
+}
+.photo-card-list{
+border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 7px 10px;
+    display: flex;
+    margin: 0;
 }

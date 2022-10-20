@@ -33,47 +33,29 @@ refs.form.addEventListener('submit', handleSubmit);
 
 function createMarkup(photos) {
   return photos
-    .map(({ largeImageURL, webformatURL, previewWidth }) => {
-      return `<li class="photo-card">
-    <a href="${largeImageURL}">
-                  <img
-                  src="${webformatURL}"
-                  alt="tags"
-                  width="${previewWidth}"
-                />
-    </a>
-                <div class="">
-                </div>
-                <ul class="photo-card-list">
-                  <li class="photo-card-item">
-                      <svg class="photo-card-icon" width="20" height="20">
-                        <use href=""></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li class="photo-card-item">
-                    <a class="photo-card-link" href="">
-                      <svg class="photo-card-icon" width="20" height="20">
-                        <use href=""></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li class="photo-card-item">
-                    <a class="photo-card-link" href="">
-                      <svg class="photo-card-icon" width="20" height="20">
-                        <use href=""></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li class="photo-card-item">
-                    <a class="photo-card-link" href="">
-                      <svg class="photo-card-icon" width="20" height="20">
-                        <use href=""></use>
-                      </svg>
-                    </a>
-                  </li>
-                </ul>
+    .map(
+      ({ largeImageURL, webformatURL, comments, views, likes, downloads }) => {
+        return `<li class="photo-card">
+ <a href="${largeImageURL}">
+    <img src="${webformatURL}" alt="tags" width="190" loading="lazy />
+  </a>
+  <div class=""></div>
+  <ul class="photo-card-list">
+    <li class="photo-card-item">
+      <p>Лайків: ${likes}</p>
+    </li>
+    <li class="photo-card-item">
+      <p>Переглядів: ${views}</p>
+    </li>
+    <li class="photo-card-item">
+      <p>Коментарів: ${comments}</p>
+    </li>
+    <li class="photo-card-item">
+      <p>Завантажень: ${downloads}</p>
+    </li>
+  </ul>
               </li>`;
-    })
+      }
+    )
     .join('');
 }
