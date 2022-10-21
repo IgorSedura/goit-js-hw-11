@@ -35,26 +35,41 @@ function createMarkup(photos) {
   return photos
     .map(
       ({ largeImageURL, webformatURL, comments, views, likes, downloads }) => {
-        return `<li class="photo-card">
- <a href="${largeImageURL}">
-    <img src="${webformatURL}" alt="tags" width="190" loading="lazy />
-  </a>
-  <div class=""></div>
-  <ul class="photo-card-list">
-    <li class="photo-card-item">
-      <p>Лайків: ${likes}</p>
-    </li>
-    <li class="photo-card-item">
-      <p>Переглядів: ${views}</p>
-    </li>
-    <li class="photo-card-item">
-      <p>Коментарів: ${comments}</p>
-    </li>
-    <li class="photo-card-item">
-      <p>Завантажень: ${downloads}</p>
-    </li>
-  </ul>
-              </li>`;
+        return `
+          <li class="gallery-item">
+            <a
+              href="${largeImageURL}"
+            >
+              <img
+                src="${webformatURL}"
+                alt="tags"
+                width="190"
+                loading="lazy"
+                alt="tags"
+            /></a>
+            <div class="gallery-info">
+              <p class="photo-card-info">
+                Лайків: <br />
+               ${likes}
+              </p>
+
+              <p class="photo-card-info">
+                Переглядів: <br />
+                ${views}
+              </p>
+
+              <p class="photo-card-info">
+                Коментарів: <br />
+                ${comments}
+              </p>
+
+              <p class="photo-card-info">
+                Завантажень: <br />
+                ${downloads}
+              </p>
+            </div>
+          </li>
+        `;
       }
     )
     .join('');
