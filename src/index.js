@@ -1,10 +1,15 @@
 import './css/style.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+import SimpleLightbox from 'simplelightbox';
+
+import 'simplelightbox/dist/simple-lightbox.min.css';
 import { PixabayAPI } from './PixabayAPI';
 import { createMarkup } from './createMarkup';
 import { refs } from './refs';
 
 const pixabay = new PixabayAPI();
+const lightbox = new SimpleLightbox('.gallery a');
 
 const handleSubmit = event => {
   event.preventDefault();
@@ -13,7 +18,6 @@ const handleSubmit = event => {
     elements: { searchQuery },
   } = event.currentTarget;
   const query = searchQuery.value.trim().toLowerCase();
-  console.log(query);
   if (!query) {
     Notify.failure('Введіть дані для пошуку!');
     return;
@@ -28,17 +32,18 @@ const handleSubmit = event => {
         Notify.info(`За вашим запитом ${query} зображень не знайденно`);
       }
       const markup = createMarkup(hits);
-      console.log(markup);
       refs.list.insertAdjacentHTML('beforeend', markup);
       pixabay.calculeteTotalPages(total);
       if (pixabay.isShowLoadMore) {
         refs.loadMoreBtn.classList.remove('is-hidden');
       }
+      lightbox.refresh();
     })
     .catch(error => {
       Notify.failure(error.massege, 'Щось пішло не так');
       clearPage();
     });
+
   refs.form.reset();
 };
 
@@ -52,6 +57,7 @@ const onLoadMore = () => {
       if (!pixabay.isShowLoadMore) {
         refs.loadMoreBtn.classList.add('is-hidden');
       }
+      lightbox.refresh();
     })
     .catch(error => {
       Notify.failure(error.massege, 'Щось пішло не так');
