@@ -108,6 +108,7 @@ li {
 
 .button-gallery:hover{
     box-shadow: 0px 1px 10px rgba(46, 229, 157, 0.4);
+    background-color: #23c483;
 }
 
 .search-input:hover {
