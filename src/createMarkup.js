@@ -16,24 +16,24 @@ export function createMarkup(photos) {
             /></a>
             <div class="gallery-info">
               <p class="photo-card-info">
-                <span class="bold">Лайків:</span> <br />
+                <span class="bold">Likes:</span> <br />
                ${likes}
               </p>
 
               <p class="photo-card-info">
-              <span class="bold">Переглядів: </span>
+              <span class="bold">Views: </span>
                 <br />
                 ${views}
               </p>
 
               <p class="photo-card-info">
-              <span class="bold">Коментарів:</span>
+              <span class="bold">Comments:</span>
                  <br />
                 ${comments}
               </p>
 
               <p class="photo-card-info">
-              <span class="bold">Завантажень: </span>
+              <span class="bold">Downloads: </span>
                 <br />
                 ${downloads}
               </p>
