@@ -1,3 +1,15 @@
+.is-hidden {
+position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    margin: -1px;
+}
 .container {
     width: 1200px;
 
@@ -114,10 +126,14 @@ img {
     width: 100%;
 }
 
+.bold {
+    font-weight: 600;
+}
 .photo-card-info {
     text-align: center;
-    font-family: EB Garamond;
-    font-weight: 500;
+font-family: Montserrat;
+    font-weight: 400;
+    font-size: 12px;
 }
 
 /* --------------------------------LOAD_MORE--------------------------- */

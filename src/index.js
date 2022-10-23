@@ -1,14 +1,10 @@
 import './css/style.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { PixabayAPI } from './PixabayAPI';
+import { createMarkup } from './createMarkup';
+import { refs } from './refs';
 
 const pixabay = new PixabayAPI();
-
-const refs = {
-  form: document.querySelector('.js-search-form'),
-  list: document.querySelector('.js-gallery'),
-  loadMoreBtn: document.querySelector('.js-more'),
-};
 
 const handleSubmit = event => {
   event.preventDefault();
@@ -22,55 +18,52 @@ const handleSubmit = event => {
     Notify.failure('Введіть дані для пошуку!');
     return;
   }
-  pixabay.getPhotos(query).then(({ hits }) => {
-    const markup = createMarkup(hits);
-    console.log(markup);
-    refs.list.insertAdjacentHTML('beforeend', markup);
-  });
+
+  pixabay.searchQuery = query;
+  clearPage();
+  pixabay
+    .getPhotos()
+    .then(({ hits, total }) => {
+      if (hits.length === 0) {
+        Notify.info(`За вашим запитом ${query} зображень не знайденно`);
+      }
+      const markup = createMarkup(hits);
+      console.log(markup);
+      refs.list.insertAdjacentHTML('beforeend', markup);
+      pixabay.calculeteTotalPages(total);
+      if (pixabay.isShowLoadMore) {
+        refs.loadMoreBtn.classList.remove('is-hidden');
+      }
+    })
+    .catch(error => {
+      Notify.failure(error.massege, 'Щось пішло не так');
+      clearPage();
+    });
+  refs.form.reset();
+};
+
+const onLoadMore = () => {
+  pixabay.incrementPage();
+  pixabay
+    .getPhotos()
+    .then(({ hits }) => {
+      const markup = createMarkup(hits);
+      refs.list.insertAdjacentHTML('beforeend', markup);
+      if (!pixabay.isShowLoadMore) {
+        refs.loadMoreBtn.classList.add('is-hidden');
+      }
+    })
+    .catch(error => {
+      Notify.failure(error.massege, 'Щось пішло не так');
+      clearPage();
+    });
 };
 
 refs.form.addEventListener('submit', handleSubmit);
+refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
-function createMarkup(photos) {
-  return photos
-    .map(
-      ({ largeImageURL, webformatURL, comments, views, likes, downloads }) => {
-        return `
-          <li class="gallery-item">
-            <a
-              href="${largeImageURL}"
-            >
-              <img
-                src="${webformatURL}"
-                alt="tags"
-                width="190"
-                loading="lazy"
-                alt="tags"
-            /></a>
-            <div class="gallery-info">
-              <p class="photo-card-info">
-                Лайків: <br />
-               ${likes}
-              </p>
-
-              <p class="photo-card-info">
-                Переглядів: <br />
-                ${views}
-              </p>
-
-              <p class="photo-card-info">
-                Коментарів: <br />
-                ${comments}
-              </p>
-
-              <p class="photo-card-info">
-                Завантажень: <br />
-                ${downloads}
-              </p>
-            </div>
-          </li>
-        `;
-      }
-    )
-    .join('');
+function clearPage() {
+  pixabay.resetPage();
+  refs.list.innerHTML = '';
+  refs.loadMoreBtn.classList.add('is-hidden');
 }
