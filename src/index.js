@@ -44,7 +44,7 @@ const handleSubmit = event => {
       clearPage();
     });
 
-  refs.form.reset();
+  // refs.form.reset();
 };
 
 const onLoadMore = () => {
