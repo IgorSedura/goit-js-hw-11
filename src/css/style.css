@@ -75,12 +75,7 @@ li {
     outline: none;
 }
 
-.button-gallery:hover {
-    background-color: #23c483;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff;
-    transform: translateY(-7px);
-}
+
 
 .button-gallery:active {
     transform: translateY(-1px);
@@ -100,6 +95,19 @@ li {
     letter-spacing: 2.5px;
     font-weight: 500;
     margin-right: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .button-gallery:hover {
+            background-color: #23c483;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            color: #fff;
+            transform: translateY(-7px);
+        }
+}
+
+.button-gallery:hover{
+    box-shadow: 0px 1px 10px rgba(46, 229, 157, 0.4);
 }
 
 .search-input:hover {
