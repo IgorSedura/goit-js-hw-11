@@ -17,7 +17,6 @@ export function createMarkup(photos) {
             >
               <img
                 src="${webformatURL}"
-                alt="tags"
                 width="190"
                 loading="lazy"
                 alt="${tags}"
