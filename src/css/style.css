@@ -6,6 +6,7 @@ body{
     margin: 200px auto;
 }
 
+
 .is-hidden {
 position: absolute;
     white-space: nowrap;
@@ -122,7 +123,16 @@ li {
 
 
 /* --------------------------------GALLERY--------------------------- */
+.icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
+fill: #4e4e50;
+    margin-right: 10px;
+}
 
             .gallery {
                     margin: 110px auto 30px;
@@ -179,9 +189,11 @@ img {
 }
 .photo-card-info {
     text-align: center;
-font-family: Montserrat;
+    font-family: Montserrat;
     font-weight: 400;
     font-size: 12px;
+    display: flex;
+    align-items: center;
 }
 
 /* --------------------------------LOAD_MORE--------------------------- */
