@@ -38,6 +38,7 @@ const handleSubmit = event => {
         refs.loadMoreBtn.classList.remove('is-hidden');
       }
       lightbox.refresh();
+      refs.pixabayLogo.classList.add('is-hidden');
     })
     .catch(error => {
       Notify.failure(error.massege, 'Щось пішло не так');

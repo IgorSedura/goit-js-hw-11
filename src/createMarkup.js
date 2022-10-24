@@ -1,7 +1,15 @@
 export function createMarkup(photos) {
   return photos
     .map(
-      ({ largeImageURL, webformatURL, comments, views, likes, downloads }) => {
+      ({
+        largeImageURL,
+        webformatURL,
+        comments,
+        views,
+        likes,
+        downloads,
+        tags,
+      }) => {
         return `
           <li class="gallery-item">
             <a
@@ -12,7 +20,7 @@ export function createMarkup(photos) {
                 alt="tags"
                 width="190"
                 loading="lazy"
-                alt="tags"
+                alt="${tags}"
             /></a>
             <div class="gallery-info">
               <p class="photo-card-info">

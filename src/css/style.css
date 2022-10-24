@@ -1,6 +1,10 @@
 body{
     background-color: #bcbbc2;
 }
+.pixabay-logo{
+    width: 400px;
+    margin: 200px auto;
+}
 
 .is-hidden {
 position: absolute;
