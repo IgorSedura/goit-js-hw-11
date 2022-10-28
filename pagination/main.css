@@ -1,0 +1,82 @@
+/* h1{
+    text-align: center;
+}
+.post{
+    text-align: center;
+    font-size: 20px;
+        padding-bottom: 20px;
+}
+
+li {
+    list-style: none;
+}
+
+.pagination__list {
+        display: flex;
+        justify-content: space-evenly;
+        cursor: pointer;
+}
+
+.pagination__item{
+    cursor: pointer;
+}
+
+.pagination__item--isActive{
+    color:crimson;
+    font-weight: 800;
+} */
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 10px;
+    background-color: cadetblue;
+}
+
+.pagination ul{
+   display: flex;
+   background-color: aliceblue;
+   padding: 8px;
+   border-radius: 50px;
+}
+.pagination ul li {
+    color: cadetblue;
+    list-style: none;
+    line-height: 45px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination ul li.numb{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    margin: 0 3px;
+}
+.pagination ul li.dots{
+    font-size: 22px;
+    cursor: default;
+}
+.pagination ul li.btn{
+   
+    padding: 0 20px;
+}
+.pagination ul li.prev{
+    border-radius: 25px 5px 5px 25px;
+}
+.pagination ul li.next {
+    border-radius: 5px 25px 25px 5px;
+}
+
+.pagination ul li.active,
+.pagination ul li.numb:hover,
+.pagination ul li.btn:hover{
+    color:aliceblue;
+    background-color: cadetblue;
+    
+}
