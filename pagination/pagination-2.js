@@ -3,9 +3,9 @@ let totalPages = 20;
 function element(currentPage, totalPages) {
   let liTag = '';
   if (currentPage > 1) {
-    liTag += `<li class="btn prev" onclick="element(${totalPages}, ${
+    liTag += `<li class="btn prev" onclick="element(${
       currentPage - 1
-    })"><span>Prev</span></li>`;
+    }, totalPages)"><span>Prev</span></li>`;
   }
   const pages = getPages(currentPage, totalPages);
   for (let i = 0; i < pages.length; i++) {
@@ -19,9 +19,9 @@ function element(currentPage, totalPages) {
     }
   }
   if (currentPage < totalPages) {
-    liTag += `<li class="btn next" onclick="element(${totalPages}, ${
+    liTag += `<li class="btn next" onclick="element(${
       currentPage + 1
-    })"><span>Next</span></li>`;
+    }, totalPages)"><span>Next</span></li>`;
   }
   console.log(liTag);
   ulTag.innerHTML = liTag;
