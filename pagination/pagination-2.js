@@ -2,6 +2,7 @@ const ulTag = document.querySelector('ul');
 let totalPages = 20;
 function element(currentPage, totalPages) {
   let liTag = '';
+  let activLi;
   if (currentPage > 1) {
     liTag += `<li class="btn prev" onclick="element(${
       currentPage - 1
@@ -11,11 +12,13 @@ function element(currentPage, totalPages) {
   for (let i = 0; i < pages.length; i++) {
     if (pages[i] === currentPage) {
       console.log(pages[i]);
-      liTag += `<li class="numb active">${pages[i]}</li>`;
+      activLi = 'active';
+      liTag += `<li class="numb ${activLi}">${pages[i]}</li>`;
     } else if (pages[i] === '...') {
       liTag += `<li class="dots"><span>...</span></li>`;
     } else {
-      liTag += `<li class="numb" onclick="element(totalPages, ${pages[i]})">${pages[i]}</li>`;
+      liTag += `<li class="numb" onclick="element(${pages[i]}, totalPages)">${pages[i]}</li>`;
+      console.log(pages[i]);
     }
   }
   if (currentPage < totalPages) {
